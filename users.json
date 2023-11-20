@@ -1,0 +1,50 @@
+[
+    {
+        "id": 1,
+        "name": "wesam",
+        "tasks": [
+            {
+                "taskId": 101,
+                "title": "Complete project report",
+                "completed": false
+            },
+            {
+                "taskId": 102,
+                "title": "Attend team meeting",
+                "completed": true
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "name": "rami",
+        "tasks": [
+            {
+                "taskId": 201,
+                "title": "Update website content",
+                "completed": false
+            },
+            {
+                "taskId": 202,
+                "title": "Call supplier",
+                "completed": false
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "name": "zain",
+        "tasks": [
+            {
+                "taskId": 301,
+                "title": "Prepare presentation slides",
+                "completed": true
+            },
+            {
+                "taskId": 302,
+                "title": "Send emails to clients",
+                "completed": false
+            }
+        ]
+    }
+]
