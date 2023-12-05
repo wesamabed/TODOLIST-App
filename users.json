@@ -6,12 +6,12 @@
             {
                 "taskId": 101,
                 "title": "Complete project report",
-                "completed": false
+                "status": "Completed"
             },
             {
                 "taskId": 102,
                 "title": "Attend team meeting",
-                "completed": true
+                "status": "In Progress"
             }
         ]
     },
@@ -22,12 +22,12 @@
             {
                 "taskId": 201,
                 "title": "Update website content",
-                "completed": false
+                "status": "Waiting"
             },
             {
                 "taskId": 202,
                 "title": "Call supplier",
-                "completed": false
+                "status": "Completed"
             }
         ]
     },
@@ -38,12 +38,12 @@
             {
                 "taskId": 301,
                 "title": "Prepare presentation slides",
-                "completed": true
+                "status": "In Progress"
             },
             {
                 "taskId": 302,
                 "title": "Send emails to clients",
-                "completed": false
+                "status": "Waiting"
             }
         ]
     }
