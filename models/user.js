@@ -1,19 +1,30 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs');
 
-const taskSchema = new Schema({
-    title: String,
-    status: {
-        type: String,
-        enum: ['Completed', 'In Progress', 'Waiting']
+const notificationSettingsSchema = new mongoose.Schema({
+    emailNotifications: { type: Boolean, default: true },
+    smsNotifications: { type: Boolean, default: false },
+    pushNotifications: { type: Boolean, default: false }
+});
+
+const userSchema = new mongoose.Schema({
+    username: { type: String, required: true, unique: true, trim: true },
+    email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+    password: { type: String, required: true },
+    role: { type: String, enum: ['user', 'admin', 'manager'], default: 'user' },
+    settings: {
+        notificationSettings: notificationSettingsSchema,
+        theme: { type: String, enum: ['light', 'dark', 'auto'], default: 'auto' },
+        timezone: { type: String, default: 'UTC' }
+    },
+    tasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }]
+}, { timestamps: true });
+
+userSchema.pre('save', async function(next) {
+    if (this.isModified('password')) {
+        this.password = await bcrypt.hash(this.password, 12);
     }
+    next();
 });
 
-const userSchema = new Schema({
-    name: String,
-    tasks: [taskSchema] 
-});
-
-const User = mongoose.model('user', userSchema);
-module.exports = User;
-
+module.exports = mongoose.model('User', userSchema);
