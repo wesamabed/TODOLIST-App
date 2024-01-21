@@ -1,23 +1,46 @@
-const mongoose = require('mongoose');
-
-const commentSchema = new mongoose.Schema({
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Task = void 0;
+const mongoose_1 = __importStar(require("mongoose"));
+const commentSchema = new mongoose_1.Schema({
     content: { type: String, required: true },
-    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    author: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'User' },
     createdAt: { type: Date, default: Date.now }
 });
-
-const taskSchema = new mongoose.Schema({
+const taskSchema = new mongoose_1.Schema({
     title: { type: String, required: true, trim: true },
     description: { type: String, trim: true },
     dueDate: { type: Date },
     priority: { type: String, enum: ['Low', 'Medium', 'High'], default: 'Medium' },
     status: { type: String, enum: ['Todo', 'In Progress', 'Done'], default: 'Todo' },
-    owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    assignedTo: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    categories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'TagCategory' }],
+    owner: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'User', required: true },
+    assignedTo: { type: mongoose_1.default.Schema.Types.ObjectId, ref: 'User' },
+    categories: [{ type: mongoose_1.default.Schema.Types.ObjectId, ref: 'TagCategory' }],
     reminders: [{ type: Date }],
-    subTasks: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Task' }], 
+    subTasks: [{ type: mongoose_1.default.Schema.Types.ObjectId, ref: 'Task' }],
     comments: [commentSchema]
 }, { timestamps: true });
-
-module.exports = mongoose.model('Task', taskSchema);
+exports.Task = mongoose_1.default.model('Task', taskSchema);

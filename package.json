@@ -4,23 +4,38 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "nodemon": "nodemon app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.1510.0",
+    "@aws-sdk/client-dynamodb": "^3.490.0",
+    "@aws-sdk/client-s3": "^3.490.0",
+    "@aws-sdk/client-ssm": "^3.490.0",
     "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "joi": "^17.11.0",
     "jsonwebtoken": "^9.0.2",
-    "mongodb": "^6.3.0",
-    "mongoose": "^8.0.2"
+    "mock-req-res": "^1.2.1",
+    "moment-timezone": "^0.5.44",
+    "mongodb": "^6.3.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^4.17.21",
+    "@types/hapi__joi": "^17.1.14",
+    "@types/jest": "^29.5.11",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/moment-timezone": "^0.5.30",
+    "@types/mongoose": "^5.11.97",
+    "@types/supertest": "^6.0.2",
+    "jest": "^29.7.0",
+    "mongoose": "^8.0.4",
     "nodemon": "^3.0.2",
+    "supertest": "^6.3.4",
+    "ts-jest": "^29.1.1",
     "typescript": "^5.3.3"
   }
 }
